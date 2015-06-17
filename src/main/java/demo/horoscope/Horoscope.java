@@ -18,6 +18,8 @@ public class Horoscope {
 		System.out.println("==============");
 	}
 	
+	
+	
 	// iterate through the Signs and returns an instance of the users sign
 	// private static Sign returnUserSign() {}
 	private static void  returnUserSign(){
@@ -34,17 +36,27 @@ public class Horoscope {
 		
 		// Array of all the instances of the signs
 		Sign[] signArr = {virgo, gemini};
-				
+		boolean signFound = false;	
+		
 		// iterates through the sign instances in order to retrieve the one with the goods
 		// right now im not returning an object; im just calling that objects methods ---for later
 		for (int i = 0; i < signArr.length; i++) {
 			if (userResponse.equals(signArr[i].getClass().getSimpleName())) {
 				System.out.println("this method works! Here's today's 'scope." 
 									+ signArr[i].currentHoroscope());
+				signFound = true;
 			}
 		}
-
+		
 		userInput.close();
+		
+		if(!signFound){
+			System.out.println("I don't know that sign.");
+			returnUserSign();
+		}
+		
+
+		
 		// end of Scanner method
 		System.out.println(arrayOSigns().length); 
 		// flesh out array method and treat it like any other array
