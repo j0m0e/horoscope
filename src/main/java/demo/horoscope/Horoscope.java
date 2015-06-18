@@ -7,7 +7,7 @@ public class Horoscope {
 	
 		welcome();
 	
-		returnUserSign();
+		returnUserSign(0);
 		
 	}
 	
@@ -22,12 +22,12 @@ public class Horoscope {
 	
 	// iterate through the Signs and returns an instance of the users sign
 	// private static Sign returnUserSign() {}
-	private static void  returnUserSign(){
+	private static void  returnUserSign(int counter){
 		// returns void for now because i don't have a method to feed my Sign to
 		// this method gets the input the command line in order to choose the right sign
 		
 		Scanner userInput = new Scanner( System.in );
-		System.out.println("Hey babe what's your sign?");
+		System.out.println("Type your sign and press enter");
 		String userResponse = userInput.next();
 		
 		// instances of all the Signs
@@ -48,16 +48,19 @@ public class Horoscope {
 			}
 		}
 		
-		userInput.close();
-		
-		if(!signFound){
+		if(!signFound && counter < 4){
 			System.out.println("I don't know that sign.");
-			returnUserSign();
+			counter++;
+			returnUserSign(counter);
+		}
+		else{
+			System.out.println("You entered wrong info too many times. bye.");
 		}
 		
 
-		
+		userInput.close();
 		// end of Scanner method
+		System.out.println("counter at: " + counter);
 		System.out.println(arrayOSigns().length); 
 		// flesh out array method and treat it like any other array
 		// arrayOSigns()[i]
